@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+pypdf
+langchain-text-splitters
+langchain-openai
+langchain-chroma
+python-dotenv
