@@ -4,7 +4,7 @@ from fastapi import APIRouter, UploadFile, File
 from pypdf import PdfReader
 
 from app.rag.splitter import split_text
-from db.vectorstore import add_documents, get_all_documents
+from db.vectorstore import add_documents, get_all_documents, delete_documents
 
 router = APIRouter()
 
@@ -42,3 +42,8 @@ async def upload_document(file: UploadFile = File(...)):
 @router.get("/documents")
 def get_documents():
     return {"documents": get_all_documents()}
+
+@router.delete("/delete-document/{document_id}")
+def delete_document(document_id: int):
+    delete_documents(document_id)
+    return {"message": "Document deleted successfully"}

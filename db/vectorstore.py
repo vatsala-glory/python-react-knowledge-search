@@ -23,3 +23,9 @@ def get_all_documents() -> list[dict]:
             if doc_id not in docs:
                 docs[doc_id] = {"id": doc_id, "filename": metadata.get("filename")}
     return list(docs.values())
+
+def delete_documents(document_id: int):
+    vector_db.delete(where={"doc_id": document_id})
+
+def delete_all_documents():
+    vector_db.delete_all()
